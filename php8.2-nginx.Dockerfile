@@ -16,7 +16,9 @@ RUN apt-get update && apt-get install -y git procps inetutils-ping net-tools ngi
     && curl -sfL https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer \
     && chmod +x /usr/bin/composer \
     && composer self-update 2.3.10 \
-    && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+    && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ \
+    && mkdir -p /var/log/php \
+    && mkdir -p /var/log/php-fpm
 
 EXPOSE 80
 COPY ./php8.2-nginx/code /app
@@ -25,6 +27,6 @@ COPY ./php8.2-nginx/php/php/php.ini /usr/local/etc/php/php.ini
 COPY ./php8.2-nginx/php/php-fpm.d/docker.conf /usr/local/etc/php-fpm.d/docker.conf
 COPY ./php8.2-nginx/php/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/www.conf
 
-COPY ./php8.2-nginx/nginx/app.conf /etc/nginx/conf.d/app.conf
+COPY ./php8.2-nginx/nginx/nginx.conf /etc/nginx/nginx.conf
 
 CMD nginx && php-fpm
