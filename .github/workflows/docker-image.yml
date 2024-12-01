@@ -17,7 +17,7 @@ jobs:
           password: "${{ secrets.ACR_PASSWORD }}" # 引用GitHub repo设置的镜像容器服务密码
       - name: Build and Push Docker Image
         env:
-          IMAGE_TAG: 8.3.14-fpm-v1.0 # 用于标记容器版本号
+          IMAGE_TAG: 8.3.14-fpm-v1.1 # 用于标记容器版本号
         run: |
           docker build -f php8.3.Dockerfile -t registry.cn-hangzhou.aliyuncs.com/cuiw/php:$IMAGE_TAG .
           docker push registry.cn-hangzhou.aliyuncs.com/cuiw/php:$IMAGE_TAG
