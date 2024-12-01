@@ -13,8 +13,8 @@ RUN apt-get update && apt-get install -y vim git procps inetutils-ping net-tools
         libmagickwand-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
-    && pecl install redis-6.1.0 mongodb-1.20.1 xdebug-3.4.0 imagick-3.7.0 apcu-5.1.24 \
-    && docker-php-ext-enable redis mongodb xdebug imagick apcu \
+    && pecl install redis-6.1.0 mongodb-1.20.1 xdebug-3.4.0 apcu-5.1.24 \
+    && docker-php-ext-enable redis mongodb xdebug apcu \
     && docker-php-ext-install pdo pdo_mysql mysqli zip sockets bcmath pdo_pgsql pgsql intl pcntl \
     && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
