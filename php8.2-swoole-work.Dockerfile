@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y git procps inetutils-ping net-tools unz
     && docker-php-ext-install -j$(nproc) gd \
     && pecl install redis-6.1.0 mongodb-1.20.1 xdebug-3.4.0 imagick-3.7.0 apcu-5.1.24 \
     && pecl install -D 'enable-sockets="no" enable-openssl="yes" enable-http2="yes" enable-mysqlnd="yes" enable-swoole-json="no" enable-swoole-curl="yes" enable-cares="yes"' swoole-6.0.2 \
-    && docker-php-ext-enable redis mongodb xdebug imagick apcu \
+    && docker-php-ext-enable redis swoole mongodb xdebug imagick apcu \
     && docker-php-ext-install pdo pdo_mysql mysqli zip sockets bcmath pdo_pgsql pgsql intl pcntl \
     && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
